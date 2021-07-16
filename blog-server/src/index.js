@@ -1,17 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+const Koa = require('koa');
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const app = new Koa();
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+app.use(async (ctx, next) => {
+    console.log(ctx.url);
+    console.log(1);
+    if(ctx.query.authorized !== '1') {
+        ctx.status = 401;
+        return;
+    }
+    // next().then(() => {
+    //     console.log('END');
+    // });
+    await next();
+    console.log('END');
+});
+
+app.use((ctx, next) => {
+    console.log(2);
+    next();
+});
+
+app.use(ctx => {
+    ctx.body = 'hello world';
+});
+
+app.listen(4000, () => {
+    console.log('Listening to port 4000');
+});
