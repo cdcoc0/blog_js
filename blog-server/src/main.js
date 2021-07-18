@@ -11,6 +11,7 @@ const {PORT, MONGO_URI} = process.env;
 mongoose.connect(MONGO_URI, {useNewUrlParser: true, useFindAndModify: false})
         .then(() => {
           console.log('Connected to MongoDB');
+          //createFakeData();
         })
         .catch(e => {
           console.error(e);
