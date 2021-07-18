@@ -1,5 +1,6 @@
 import Post from '../../models/post';
 import mongoose from 'mongoose';
+import Joi from '@hapi/joi';
 
 const {ObjectId} = mongoose.Types;
 
@@ -13,6 +14,20 @@ export const checkObjectId = (ctx, next) => {
 }
 
 export const write =async ctx => {
+    //validate
+    const schema = Joi.object().keys({
+        //객체가 다음 필드를 갖고 있음을 검증
+        title: Joi.string().required(),
+        body: Joi.string().required(),
+        tags: Joi.array().items(Joi.string()).required()
+    });
+    //검증 실패인 경우 에러처리
+    const result = schema.validate(ctx.request.body);
+    if(result.error) {
+        ctx.status = 400; //Bad Request
+        ctx.body = result.error;
+        return;
+    }
     const {title, body, tags} = ctx.request.body;
     const post = new Post({
         title,
@@ -62,6 +77,17 @@ export const remove = async ctx => {
 };
 
 export const update = async ctx => {
+    const schema = Joi.object().keys({
+        title: Joi.string(),
+        body: Joi.string(),
+        tags: Joi.array().items(Joi.string())
+    });
+    const result = schema.validate(ctx.request.body);
+    if(result.error) {
+        ctx.status = 400;
+        ctx.body = result.error;
+        return;
+    }
     const {id} = ctx.params;
     try {
         const post = await Post.findByIdAndUpdate(id, ctx.request.body, {
