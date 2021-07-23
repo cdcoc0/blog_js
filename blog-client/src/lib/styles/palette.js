@@ -11,7 +11,8 @@ const palette = {
     ],
     yellow: [
         '#FFFF99',
-        '#fffa65'
+        '#fffa65',
+        '#F6E58D'
     ],
     gray: [
         '#f8f9fa',
