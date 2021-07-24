@@ -63,7 +63,7 @@ const textMap = {
     register: 'Sign up'
 };
 
-const AuthForm = ({type}) => {
+const AuthForm = ({type, form, onChange, onSubmit}) => {
     const text = textMap[type];
 
     return (
@@ -72,11 +72,11 @@ const AuthForm = ({type}) => {
                 {type === 'login' ? <FaUserCircle /> : <FaUserPlus />}
                 <h2>{text}</h2>
             </div>
-            <form>
-                <StyledInput autoComplete="username" name="username" placeholder="ID" />
-                <StyledInput autoComplete="new-password" name="password" placeholder="Password" type="password" />
+            <form onSubmit={onSubmit}>
+                <StyledInput autoComplete="username" name="username" placeholder="ID" onChange={onChange} value={form.username} />
+                <StyledInput autoComplete="new-password" name="password" placeholder="Password" type="password" onChange={onChange} value={form.password} />
                 {type === 'register' && (
-                    <StyledInput autoComplete="new-password" name="passwordConfirm" placeholder="Confirm password" type="password" />
+                    <StyledInput autoComplete="new-password" name="passwordConfirm" placeholder="Confirm password" type="password" onChange={onChange} value={form.passwordConfirm} />
                 )}
                 <ButtonWithMarginTop violet fullWidth>Enter</ButtonWithMarginTop>
             </form>
