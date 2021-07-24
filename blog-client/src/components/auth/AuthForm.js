@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../common/Button";
 import palette from "../../lib/styles/palette";
-import {FaUserCircle} from 'react-icons/fa';
+import {FaUserCircle, FaUserPlus} from 'react-icons/fa';
 
 const AuthFormBlock = styled.div`
     .title {
@@ -11,7 +11,7 @@ const AuthFormBlock = styled.div`
         align-items: center;
         justify-content: center;
         color: ${palette.violet[3]};
-        margin-bottom: 1.75rem;
+        margin-bottom: 2rem;
         svg {
             margin-right: 0.5rem;
             font-size: 1.5rem;
@@ -58,21 +58,40 @@ const Footer = styled.div`
     }
 `;
 
-const AuthForm = () => {
+const textMap = {
+    login: 'Log in',
+    register: 'Sign up'
+};
+
+const AuthForm = ({type}) => {
+    const text = textMap[type];
+
     return (
         <AuthFormBlock>
             <div className="title">
-                <FaUserCircle />
-                <h2>Log in</h2>
+                {type === 'login' ? <FaUserCircle /> : <FaUserPlus />}
+                <h2>{text}</h2>
             </div>
             <form>
                 <StyledInput autoComplete="username" name="username" placeholder="ID" />
                 <StyledInput autoComplete="new-password" name="password" placeholder="Password" type="password" />
+                {type === 'register' && (
+                    <StyledInput autoComplete="new-password" name="passwordConfirm" placeholder="Confirm password" type="password" />
+                )}
                 <ButtonWithMarginTop violet fullWidth>Enter</ButtonWithMarginTop>
             </form>
             <Footer>
-                <span>Not registered?</span>
-                <Link to="/register">create account</Link>
+                {type === 'login' ? (
+                    <>
+                        <span>Not registered?</span>
+                        <Link to="/register">create account</Link>
+                    </>
+                ) : (
+                    <>
+                        <span>Already have an account?</span>
+                        <Link to="/login">sign in</Link>
+                    </>
+                )}
             </Footer>
         </AuthFormBlock>
     );

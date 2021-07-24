@@ -29,11 +29,11 @@ const WhiteBox = styled.div`
         letter-spacing: 2px;
         color: ${palette.violet[3]};
     }
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.025);
     padding: 2rem;
     width: 360px;
-    //background: white;
+    //background: ${palette.violet[3]};
     border-radius: 4px;
     border: 1px solid ${palette.violet[3]};
 `
