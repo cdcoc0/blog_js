@@ -43,6 +43,7 @@ const LoginForm = ({history}) => {
         }
         if(auth) {
             console.log('login succeeded');
+            console.log(auth);
             dispatch(check());
         }
     }, [auth, authError, dispatch]);
