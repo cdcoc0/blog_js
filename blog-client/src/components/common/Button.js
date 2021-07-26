@@ -44,13 +44,13 @@ const buttonStyle = css`
         props.frame &&
         css`
             background: none;
-            border: 2px solid ${palette.violet[1]};
+            border: 2px solid ${palette.violet[0]};
             border-radius: 15px;
-            color: ${palette.violet[1]};
+            color: ${palette.violet[0]};
             &:hover {
                 background: none;
-                border: 2px solid ${palette.violet[0]};
-                color: ${palette.violet[0]};
+                border: 2px solid ${palette.violet[6]};
+                color: ${palette.violet[6]};
             }
             transition: 0.1s ease-in;
         `
