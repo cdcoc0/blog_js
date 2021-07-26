@@ -32,8 +32,24 @@ const StyledButton = styled.button`
         css`
             background: ${palette.violet[3]};
             &:hover {
-                background-color: ${palette.yellow[2]};
+                background: ${palette.yellow[2]};
                 color: #130f40;
+            }
+            transition: 0.1s ease-in;
+        `
+    }
+
+    ${props =>
+        props.frame &&
+        css`
+            background: none;
+            border: 2px solid ${palette.violet[1]};
+            border-radius: 15px;
+            color: ${palette.violet[1]};
+            &:hover {
+                background: ${palette.violet[0]};
+                //border: 2px solid ${palette.violet[0]};
+                //color: ${palette.violet[0]};
             }
             transition: 0.1s ease-in;
         `

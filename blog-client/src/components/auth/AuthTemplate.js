@@ -10,8 +10,8 @@ const AuthTemplateBlock = styled.div`
     top: 0;
     bottom: 0;
     right: 0;
-    background: ${palette.gray[8]};
-    //background: #EBEBEB;
+    //background: ${palette.gray[8]};
+    background: #141433;
 
     /* 내부 중앙 정렬 */
     display: flex;
