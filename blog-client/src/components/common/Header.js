@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Responsive from "./Responsive";
 import Button from "./Button";
+import { Link } from "react-router-dom";
 import palette from "../../lib/styles/palette";
 
 const HeaderBlock = styled.div`
@@ -23,7 +24,7 @@ const Wrapper = styled(Responsive)`
         font-weight: 800;
         letter-spacing: 2px;
         margin-top: 8rem;
-        color: ${palette.gray[0]};
+        color: ${palette.violet[0]};
     }
     .right {
         margin-top: 1rem;
@@ -39,9 +40,9 @@ const Header = () => {
         <>
             <HeaderBlock>
                 <Wrapper>
-                    <div className="logo">KIRRIS</div>
+                    <Link to="/" className="logo">KIRRIS</Link>
                     <div className="right">
-                        <Button frame>Sign in</Button>
+                        <Button to="/login" frame>Sign in</Button>
                     </div>
                 </Wrapper>
             </HeaderBlock>
