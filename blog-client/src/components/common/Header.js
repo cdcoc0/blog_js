@@ -10,44 +10,51 @@ const HeaderBlock = styled.div`
     position: fixed;
     width: 100%;
     //background: #141433;
-    //background: #481080;
-    background: ${palette.violet[3]};
+    //background: #fdfbff;
     //border-bottom: 2px solid ${palette.violet[3]};
-    box-shadow: 0px 1px 3px ${palette.violet[4]};
+    //box-shadow: 0px 1px 3px ${palette.violet[0]};
 `;
 
 const Wrapper = styled(Responsive)`
-    height: 10rem;
     display: flex;
     //align-items: center;
-    justify-content: space-between; //서로간의 여백 최대
-    .logo {
-        font-size: 2rem;
-        font-weight: 800;
-        letter-spacing: 2px;
-        margin-top: 4rem;
-        color: white;
-    }
+    //justify-content: space-between; //서로간의 여백 최대
+    flex-direction: row-reverse;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
     .right {
         display: flex;
         align-items: flex-start;
-        margin-top: 1rem;
-        color: white;
+        color: ${palette.violet[3]};
         svg {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             margin-right: 0.075rem;
         }
     }
 `;
 
+const HeaderBar = styled(Responsive)`
+    width: 100%;
+    background: ${palette.violet[3]};
+    display: flex;
+    .logo {
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        color: #fbf7ff;
+        width: 1024px;
+        margin: 0.5rem auto;
+    }
+`;
+
 const Spacer = styled.div`
-    height: 18rem;
+    height: 8rem;
 `;
 
 const UserInfo = styled.div`
     font-size: 1.25rem;
     font-weight: bold;
-    margin-right: 1rem;
+    margin-right: 1.5rem;
 `;
 
 const Header = ({user, onLogout}) => {
@@ -55,7 +62,7 @@ const Header = ({user, onLogout}) => {
         <>
             <HeaderBlock>
                 <Wrapper>
-                    <Link to="/" className="logo">KIRRIS</Link>
+                    
                     {user ? (
                         <div className="right">
                             <RiMapPinUserFill />
@@ -68,6 +75,9 @@ const Header = ({user, onLogout}) => {
                         </div>
                     )}
                 </Wrapper>
+                <HeaderBar>
+                    <Link to="/" className="logo">KIRRIS</Link>
+                </HeaderBar>
             </HeaderBlock>
             <Spacer />
         </>
