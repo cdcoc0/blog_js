@@ -33,19 +33,19 @@ const buttonStyle = css`
         css`
             background: ${palette.violet[3]};
             &:hover {
-                background: ${palette.yellow[2]};
-                color: #130f40;
+                //background: ${palette.yellow[2]};
+                background: #130f40;
+                //background: #141433;
             }
             transition: 0.1s ease-in;
         `
     }
 
     ${props =>
-        props.frame &&
+        props.frame && 
         css`
             background: none;
             border: 2px solid ${palette.violet[3]};
-            border-radius: 15px;
             color: ${palette.violet[3]};
             &:hover {
                 background: none;
@@ -53,6 +53,12 @@ const buttonStyle = css`
                 color: ${palette.violet[2]};
             }
             transition: 0.1s ease-in;
+        `
+    }
+    ${props => 
+        props.radius &&
+        css`
+            border-radius: 16px;
         `
     }
 `;

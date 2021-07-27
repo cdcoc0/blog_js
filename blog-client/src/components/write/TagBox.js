@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import palette from "../../lib/styles/palette";
 
@@ -8,7 +8,7 @@ const TagBoxBlock = styled.div`
     padding-top: 2rem;
 
     h4 {
-        color: ${palette.gray[8]};
+        color: ${palette.gray[7]};
         margin-top: 0;
         margin-bottom: 0.5rem;
     }
@@ -19,7 +19,7 @@ const TagForm = styled.form`
     overflow: hidden;
     display: flex;
     width: 256px;
-    border: 1px solid ${palette.gray[9]}; //초기화
+    border: 1px solid ${palette.gray[6]}; //초기화
     
     input,
     button {
@@ -38,11 +38,13 @@ const TagForm = styled.form`
         padding-right: 1rem;
         padding-left: 1rem;
         border: none;
-        background: ${palette.gray[8]};
+        background: ${palette.violet[3]};
         color: white;
         font-weight: bold;
         &:hover {
-            background: ${palette.gray[6]};
+            background: ${palette.violet[4]};
+            /* background: ${palette.yellow[2]};
+            color: #130f40; */
         }
     }
 `;
@@ -50,7 +52,7 @@ const TagForm = styled.form`
 const Tag = styled.div`
     margin-right: 0.5rem;
     color: ${palette.gray[6]};
-    cursor: pointer;
+    //cursor: pointer;
     &:hover {
         opacity: 0.5;
     }
@@ -61,25 +63,60 @@ const TagListBlock = styled.div`
     margin-top: 0.5rem;
 `;
 
-const TagItem = React.memo(({tag}) => <Tag>#{tag}</Tag>)
+const TagItem = React.memo(({tag, onRemove}) => <Tag onClick={() => onRemove(tag)}>#{tag}</Tag>)
 
-const TagList = React.memo(({tags}) => (
+const TagList = React.memo(({tags, onRemove}) => (
     <TagListBlock>
         {tags.map(tag => (
-            <TagItem key={tag} tag={tag} />
+            <TagItem key={tag} tag={tag} onRemove={onRemove} />
         ))}
     </TagListBlock>
 ))
 
 const TagBox = () => {
+    const [input, setInput] = useState('');
+    const [localTags, setLocalTags] = useState([]);
+
+    const insertTag = useCallback(
+        tag => {
+            if(!tag) return;
+            if(localTags.includes(tag)) return;
+            setLocalTags([...localTags, tag]);
+        },
+        [localTags]
+    );
+
+    const onRemove = useCallback(
+        tag => {
+            setLocalTags(localTags.filter(t => t !== tag));
+        },
+        [localTags]
+    );
+
+    const onChange = useCallback(
+        e => {
+            setInput(e.target.value);
+        },
+        []
+    );
+
+    const onSubmit = useCallback(
+        e => {
+            e.preventDefault();
+            insertTag(input.trim());
+            setInput('');
+        },
+        [input, insertTag]
+    )
+
     return (
         <TagBoxBlock>
             <h4>태그</h4>
-            <TagForm>
-                <input />
+            <TagForm onSubmit={onSubmit}>
+                <input value={input} onChange={onChange} />
                 <button>추가</button>
             </TagForm>
-            <TagList tags={['태그1', '태그2', '태그3']} />
+            <TagList tags={localTags} onRemove={onRemove} />
         </TagBoxBlock>
     );
 }

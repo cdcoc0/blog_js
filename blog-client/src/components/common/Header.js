@@ -58,11 +58,11 @@ const Header = ({user, onLogout}) => {
                         <div className="right">
                             <RiMapPinUserFill />
                             <UserInfo>{user.username}</UserInfo>
-                            <Button frame onClick={onLogout}>Log out</Button>
+                            <Button frame radius onClick={onLogout}>Log out</Button>
                         </div>
                     ) : (
                         <div className="right">
-                            <Button to="/login" frame>Sign in</Button>
+                            <Button to="/login" frame radius>Sign in</Button>
                         </div>
                     )}
                 </Wrapper>
