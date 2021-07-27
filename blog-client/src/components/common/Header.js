@@ -11,32 +11,26 @@ const HeaderBlock = styled.div`
     width: 100%;
     //background: #141433;
     //background: #fdfbff;
-    //border-bottom: 2px solid ${palette.violet[3]};
     //box-shadow: 0px 1px 3px ${palette.violet[0]};
 `;
 
 const Wrapper = styled(Responsive)`
+    height: 4rem;
     display: flex;
     align-items: center;
     justify-content: space-between; //서로간의 여백 최대
-    //flex-direction: row-reverse;
     color: ${palette.violet[3]};
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
-    border-bottom: 1px solid ${palette.violet[3]};
+    //margin-top: 1rem;
+    //margin-bottom: 0.75rem;
     .logo {
         font-size: 2rem;
         font-weight: 800;
         letter-spacing: 2px;
         //color: #fbf7ff;
-        width: 1024px;
-        margin: 0.5rem auto;
-        flex: 1;
     }
     .right {
         display: flex;
-        //align-items: flex-start;
-        //justify-content: center;
+        color: ${palette.gray[7]};
         svg {
             font-size: 1.5rem;
             margin-right: 0.075rem;
@@ -45,7 +39,7 @@ const Wrapper = styled(Responsive)`
 `;
 
 const Spacer = styled.div`
-    height: 8rem;
+    height: 4rem;
 `;
 
 const UserInfo = styled.div`

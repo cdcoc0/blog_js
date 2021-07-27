@@ -1,8 +1,11 @@
 import React from 'react';
+import Editor from '../components/write/Editor';
 
 const WritePage = () => {
     return (
-        <div>Write Post</div>
+        <>
+            <Editor />
+        </>
     );
 };
 
