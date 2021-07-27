@@ -17,33 +17,30 @@ const HeaderBlock = styled.div`
 
 const Wrapper = styled(Responsive)`
     display: flex;
-    //align-items: center;
-    //justify-content: space-between; //서로간의 여백 최대
-    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between; //서로간의 여백 최대
+    //flex-direction: row-reverse;
+    color: ${palette.violet[3]};
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
-    .right {
-        display: flex;
-        align-items: flex-start;
-        color: ${palette.violet[3]};
-        svg {
-            font-size: 1.5rem;
-            margin-right: 0.075rem;
-        }
-    }
-`;
-
-const HeaderBar = styled(Responsive)`
-    width: 100%;
-    background: ${palette.violet[3]};
-    display: flex;
+    border-bottom: 1px solid ${palette.violet[3]};
     .logo {
         font-size: 2rem;
         font-weight: 800;
         letter-spacing: 2px;
-        color: #fbf7ff;
+        //color: #fbf7ff;
         width: 1024px;
         margin: 0.5rem auto;
+        flex: 1;
+    }
+    .right {
+        display: flex;
+        //align-items: flex-start;
+        //justify-content: center;
+        svg {
+            font-size: 1.5rem;
+            margin-right: 0.075rem;
+        }
     }
 `;
 
@@ -62,7 +59,7 @@ const Header = ({user, onLogout}) => {
         <>
             <HeaderBlock>
                 <Wrapper>
-                    
+                    <Link to="/" className="logo">KIRRIS</Link>
                     {user ? (
                         <div className="right">
                             <RiMapPinUserFill />
@@ -75,9 +72,6 @@ const Header = ({user, onLogout}) => {
                         </div>
                     )}
                 </Wrapper>
-                <HeaderBar>
-                    <Link to="/" className="logo">KIRRIS</Link>
-                </HeaderBar>
             </HeaderBlock>
             <Spacer />
         </>
