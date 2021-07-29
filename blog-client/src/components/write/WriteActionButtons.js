@@ -18,7 +18,7 @@ const StyledButton = styled(Button)`
     }
 `;
 
-const WriteActionButtons = () => {
+const WriteActionButtons = ({onCancel, onPublish}) => {
     return (
         <WriteActionButtonsBlock>
             <StyledButton violet>포스트 등록</StyledButton>

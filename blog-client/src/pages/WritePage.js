@@ -1,17 +1,17 @@
 import React from 'react';
 import Responsive from '../components/common/Responsive';
-import Editor from '../components/write/Editor';
-import TagBox from '../components/write/TagBox';
-import WriteActionButtons from '../components/write/WriteActionButtons';
+import EditorContainer from '../containers/write/EditorContainer';
+import TagBoxContainer from '../containers/write/TagBoxContainer';
+import WriteActionButtonsContainer from '../containers/write/WriteActionButtonsContainer';
 
 const WritePage = () => {
     return (
         <>
             <Responsive>카테고리</Responsive>
-            <Editor />
+            <EditorContainer />
             <Responsive>
-                <TagBox />
-                <WriteActionButtons />
+                <TagBoxContainer />
+                <WriteActionButtonsContainer />
             </Responsive>
         </>
     );
