@@ -71,7 +71,9 @@ const TagList = React.memo(({tags, onRemove}) => (
             <TagItem key={tag} tag={tag} onRemove={onRemove} />
         ))}
     </TagListBlock>
-))
+    //field change할때 오류나는 이유??
+    //첫 렌더링은 됨...
+));
 
 const TagBox = ({tags, onChangeTags}) => {
     //tag는 이 컴포넌트에서 관리
@@ -85,7 +87,7 @@ const TagBox = ({tags, onChangeTags}) => {
             if(!tag) return;
             if(localTags.includes(tag)) return;
             const nextTags = [...localTags, tag];
-            setLocalTags([...localTags, tag]);
+            setLocalTags(nextTags);
             onChangeTags(nextTags);
         },
         [localTags, onChangeTags]
