@@ -1,8 +1,8 @@
 import React from 'react';
 import Sidebar from '../components/common/Sidebar';
-import PostViewer from '../components/post/PostViewer';
 import HeaderContainer from '../containers/common/HeaderContainer';
 import styled from 'styled-components';
+import PostViewerContainer from '../containers/post/PostViewerContainer';
 
 const Display = styled.div`
     display: flex;
@@ -15,7 +15,7 @@ const PostPage = () => {
             <HeaderContainer />
             <Display>
                 <Sidebar />
-                <PostViewer />
+                <PostViewerContainer />
             </Display>
         </>
     );

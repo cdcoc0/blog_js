@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import Responsive from "./Responsive";
 
 const SidebarBlock = styled.div`
-    width: 320px;
+    width: 280px;
     //margin-top: 4rem;
     padding: 2rem;
     display: flex;

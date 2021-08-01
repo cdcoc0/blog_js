@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import palette from "../../lib/styles/palette";
 import Responsive from "../common/Responsive";
+import {FaTags} from 'react-icons/fa';
 
 const PostViewerBlock = styled(Responsive)`
     //margin-top: 4rem;
@@ -38,19 +39,27 @@ const PostContent = styled.div`
 `;
 
 const Tags = styled.div`
-    //color: ${palette.gray[6]};
     margin-top: 3rem;
     margin-bottom: 3rem;
+    .tag-title {
+        color: ${palette.violet[3]};
+        margin-bottom: 1rem;
+        font-size: 1.125rem;
+        display: flex;
+        align-items: center;
+        svg {
+            margin-left: 0.25rem;
+            margin-top: 0.25rem;
+        }
+    }
     .tag {
         display: inline-block;
-        color: ${palette.gray[7]};
+        color: ${palette.violet[2]};
         text-decoration: none;
         margin-right: 0.5rem;
-        border: 1px solid ${palette.violet[3]};
+        border: 1px solid ${palette.violet[0]};
         border-radius: 16px;
-        padding: 0.25rem;
-        font-size: 0.75rem;
-        background: #fbf7ff;
+        padding: 0.25rem 0.75rem;
         &:hover {
             color: #130f40;
             background: #fff9da;
@@ -59,24 +68,41 @@ const Tags = styled.div`
     }
 `;
 
-const PostViewer = () => {
+const PostViewer = ({post, error, loading}) => {
+    if(error) {
+        if(error.response && error.response.status === 404) {
+            return <PostViewerBlock>존재하지 않는 포스트입니다.</PostViewerBlock>
+        }
+        return <PostViewerBlock>Error</PostViewerBlock>
+    }
+
+    if(loading || !post) {
+        return null;
+    }
+
+    const {title, body, tags, user, publishedDate} = post;
     return (
         <PostViewerBlock>
             <PostHead>
-                <h1>Title</h1>
+                <h1>{title}</h1>
                 <SubInfo>
                     <span>
-                        <b>tester</b>
+                        <b>{user.username}</b>
                     </span>
-                    <span>{new Date().toLocaleDateString()}</span>
+                    <span>{new Date(publishedDate).toLocaleDateString()}</span>
                 </SubInfo>
             </PostHead>
             <PostContent
-                dangerouslySetInnerHTML={{__html: '<p>HTML <b>내용</b></p>'}}
+                dangerouslySetInnerHTML={{__html: body}}
             />
             <Tags>
-                <div className="tag">#태그</div>
-                <div className="tag">#태그</div>
+                <div className="tag-title">
+                    Tags
+                    <FaTags />
+                </div>
+                {tags.map(tag => (
+                    <div className="tag" key={tag}>#{tag}</div>
+                ))}
             </Tags>
         </PostViewerBlock>
     );

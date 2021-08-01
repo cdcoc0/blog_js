@@ -73,7 +73,7 @@ const StyledLink = styled(Link)`
 
 const Button = props => {
     return props.to ? (
-        <StyledLink {...props} frame={props.frame ? 1 : 0} />
+        <StyledLink {...props} frame={props.frame ? 1 : 0} radius={props.radius ? 1 : 0} />
     ) : (
         <StyledButton {...props} />
     );
