@@ -2,6 +2,7 @@ import React from 'react';
 import HeaderContainer from '../containers/common/HeaderContainer';
 import Sidebar from '../components/common/Sidebar';
 import styled from 'styled-components';
+import PostList from '../components/posts/PostList';
 
 const PostListPage = () => {
     const Display = styled.div`
@@ -14,7 +15,7 @@ const PostListPage = () => {
             <HeaderContainer />
             <Display>
                 <Sidebar />
-                <div>하이!</div>
+                <PostList />
             </Display>
         </>
     );
