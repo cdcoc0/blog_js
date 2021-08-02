@@ -3,10 +3,23 @@ import styled from "styled-components";
 import palette from "../../lib/styles/palette";
 import Responsive from "../common/Responsive";
 import {FaTags} from 'react-icons/fa';
+import SubInfo from "../common/SubInfo";
+import Tags from "../common/Tags";
 
 const PostViewerBlock = styled(Responsive)`
     //margin-top: 4rem;
     padding-left: 0;
+    .tag-title {
+        color: ${palette.violet[3]};
+        //margin-bottom: 1rem;
+        font-size: 1.125rem;
+        display: flex;
+        align-items: center;
+        svg {
+            margin-left: 0.25rem;
+            margin-top: 0.25rem;
+        }
+    }
 `;
 
 const PostHead = styled.div`
@@ -20,17 +33,17 @@ const PostHead = styled.div`
     }
 `;
 
-const SubInfo = styled.div`
-    margin-top: 1rem;
-    color: ${palette.gray[6]};
+// const SubInfo = styled.div`
+//     margin-top: 1rem;
+//     color: ${palette.gray[6]};
 
-    span + span:before {
-        color: ${palette.gray[5]};
-        padding-left: 0.25rem;
-        padding-right: 0.25rem;
-        content: '\\B7';
-    }
-`;
+//     span + span:before {
+//         color: ${palette.gray[5]};
+//         padding-left: 0.25rem;
+//         padding-right: 0.25rem;
+//         content: '\\B7';
+//     }
+// `;
 
 const PostContent = styled.div`
     font-size: 1.3125rem;
@@ -38,35 +51,35 @@ const PostContent = styled.div`
     min-height: 320px;
 `;
 
-const Tags = styled.div`
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    .tag-title {
-        color: ${palette.violet[3]};
-        margin-bottom: 1rem;
-        font-size: 1.125rem;
-        display: flex;
-        align-items: center;
-        svg {
-            margin-left: 0.25rem;
-            margin-top: 0.25rem;
-        }
-    }
-    .tag {
-        display: inline-block;
-        color: ${palette.violet[2]};
-        text-decoration: none;
-        margin-right: 0.5rem;
-        border: 1px solid ${palette.violet[0]};
-        border-radius: 16px;
-        padding: 0.25rem 0.75rem;
-        &:hover {
-            color: #130f40;
-            background: #fff9da;
-            //아니면 그냥 회색바탕
-        }
-    }
-`;
+// const Tags = styled.div`
+//     margin-top: 3rem;
+//     margin-bottom: 3rem;
+//     .tag-title {
+//         color: ${palette.violet[3]};
+//         margin-bottom: 1rem;
+//         font-size: 1.125rem;
+//         display: flex;
+//         align-items: center;
+//         svg {
+//             margin-left: 0.25rem;
+//             margin-top: 0.25rem;
+//         }
+//     }
+//     .tag {
+//         display: inline-block;
+//         color: ${palette.violet[2]};
+//         text-decoration: none;
+//         margin-right: 0.5rem;
+//         border: 1px solid ${palette.violet[0]};
+//         border-radius: 16px;
+//         padding: 0.25rem 0.75rem;
+//         &:hover {
+//             color: #130f40;
+//             background: #fff9da;
+//             //아니면 그냥 회색바탕
+//         }
+//     }
+// `;
 
 const PostViewer = ({post, error, loading}) => {
     if(error) {
@@ -85,25 +98,13 @@ const PostViewer = ({post, error, loading}) => {
         <PostViewerBlock>
             <PostHead>
                 <h1>{title}</h1>
-                <SubInfo>
-                    <span>
-                        <b>{user.username}</b>
-                    </span>
-                    <span>{new Date(publishedDate).toLocaleDateString()}</span>
-                </SubInfo>
+                <SubInfo username={user.username} publishedDate={publishedDate} hasMarginTop />
             </PostHead>
             <PostContent
                 dangerouslySetInnerHTML={{__html: body}}
             />
-            <Tags>
-                <div className="tag-title">
-                    Tags
-                    <FaTags />
-                </div>
-                {tags.map(tag => (
-                    <div className="tag" key={tag}>#{tag}</div>
-                ))}
-            </Tags>
+            
+            <Tags tags={tags} hasMarginBottom tagTitle />
         </PostViewerBlock>
     );
 }
