@@ -1,6 +1,16 @@
 import client from './client';
+import qs from 'qs';
 
 export const writePost = ({title, body, tags}) => 
     client.post('/api/posts', {title, body, tags});
 
 export const readPost = id => client.get(`/api/posts/${id}`);
+
+export const listPosts = ({tag, username, page}) => {
+    const queryString = qs.stringify({
+        tag,
+        username,
+        page,
+    }); //카테고리 추가
+    return client.get(`/api/posts?${queryString}`);
+}

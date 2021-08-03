@@ -42,7 +42,7 @@ const TagsBlock = styled.div`
 
 const Tags = ({tags, tagTitle, hasMarginBottom}) => {
     return (
-        <TagsBlock hasMarginBottom>
+        <TagsBlock hasMarginBottom={hasMarginBottom}>
             {tagTitle && (
                 <>
                 <div className="tag-title">

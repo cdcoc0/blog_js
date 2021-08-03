@@ -2,7 +2,7 @@ import React from 'react';
 import HeaderContainer from '../containers/common/HeaderContainer';
 import Sidebar from '../components/common/Sidebar';
 import styled from 'styled-components';
-import PostList from '../components/posts/PostList';
+import PostListContainer from '../containers/posts/PostListContainer';
 
 const PostListPage = () => {
     const Display = styled.div`
@@ -15,7 +15,7 @@ const PostListPage = () => {
             <HeaderContainer />
             <Display>
                 <Sidebar />
-                <PostList />
+                <PostListContainer />
             </Display>
         </>
     );
