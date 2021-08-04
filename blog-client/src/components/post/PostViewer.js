@@ -38,7 +38,7 @@ const PostContent = styled.div`
     min-height: 320px;
 `;
 
-const PostViewer = ({post, error, loading}) => {
+const PostViewer = ({post, error, loading, actionButtons}) => {
     if(error) {
         if(error.response && error.response.status === 404) {
             return <PostViewerBlock>존재하지 않는 포스트입니다.</PostViewerBlock>
@@ -57,6 +57,7 @@ const PostViewer = ({post, error, loading}) => {
                 <h1>{title}</h1>
                 <SubInfo username={user.username} publishedDate={publishedDate} hasMarginTop />
             </PostHead>
+            {actionButtons}
             <PostContent
                 dangerouslySetInnerHTML={{__html: body}}
             />
