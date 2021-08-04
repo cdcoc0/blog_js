@@ -62,6 +62,13 @@ const Editor = ({title, body, onChangeField}) => {
         });
     }, [onChangeField]);
 
+    const mounted = useRef(false); //mount되고나서 단 한 번만 실행하게
+    useEffect(() => {
+        if(mounted.current) return;
+        mounted.current = true;
+        quillInstance.current.root.innerHTML = body;
+    }, [body]);
+
     const onChangeTitle = e => {
         onChangeField({key: 'title', value: e.target.value});
     };
