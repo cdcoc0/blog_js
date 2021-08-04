@@ -39,31 +39,6 @@ const PostItemBlock = styled.div`
     }
 `;
 
-// const SubInfo = styled.div`
-//     margin-top: 1rem;
-//     color: ${palette.gray[6]};
-
-//     span + span:before {
-//         color: ${palette.gray[4]};
-//         padding-left: 0.25rem;
-//         padding-right: 0.25rem;
-//         content: '\\B7';
-//     }
-// `;
-
-// const Tags = styled.div`
-//     margin-top: 0.5rem;
-//     .tag {
-//         display: inline-block;
-//         color: ${palette.violet[4]};
-//         text-decoration: none;
-//         margin-right: 0.5rem;
-//         &:hover {
-//             color: ${palette.violet[2]};
-//         }
-//     }
-// `;
-
 const PostItem = ({post}) => {
     const {title, body, publishedDate, tags, user, _id} = post;
     return (

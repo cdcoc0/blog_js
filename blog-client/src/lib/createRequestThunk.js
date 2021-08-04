@@ -17,7 +17,8 @@ export default function createRequestThunk(type, request) {
             const response = await request(params);
             dispatch({
                 type: SUCCESS,
-                payload: response.data
+                payload: response.data,
+                meta: response
             });
             //dispatch(finishLoading(type));
         } catch(e) {

@@ -3,6 +3,7 @@ import HeaderContainer from '../containers/common/HeaderContainer';
 import Sidebar from '../components/common/Sidebar';
 import styled from 'styled-components';
 import PostListContainer from '../containers/posts/PostListContainer';
+import PaginationContainer from '../containers/posts/PaginationContainer';
 
 const PostListPage = () => {
     const Display = styled.div`
@@ -15,7 +16,10 @@ const PostListPage = () => {
             <HeaderContainer />
             <Display>
                 <Sidebar />
-                <PostListContainer />
+                <div>
+                    <PostListContainer />
+                    <PaginationContainer />
+                </div>
             </Display>
         </>
     );
