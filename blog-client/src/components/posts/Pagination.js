@@ -24,7 +24,7 @@ const Pagination = ({page, lastPage, username, tag}) => {
                 to={
                     page === 1 ? undefined : buildLink({username, tag, page: page - 1})
                 }>이전</Button>
-            <PageNumber>page</PageNumber>
+            <PageNumber>{page}</PageNumber>
             <Button disabled={page === lastPage}
                 to={
                     page === lastPage ? undefined : buildLink({username, tag, page: page + 1})
