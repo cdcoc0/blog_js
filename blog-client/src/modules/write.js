@@ -7,11 +7,13 @@ const CHANGE_FIELD = 'write/CHANGE_FIELD'; //특정 key값 바꾸기
 const SET_ORIGINAL_POST = 'write/SET_ORIGINAL_POST';
 
 const [WRITE_POST, WRITE_POST_SUCCESS, WRITE_POST_FAILURE] = createRequestActionTypes('write/WRITE_POST');
+const [UPDATE_POST, UPDATE_POST_SUCCESS, UPDATE_POST_FAILURE] = createRequestActionTypes('write/UPDATE_POST');
 
 export const initialize = createAction(INITIALIZE);
 export const changeField = createAction(CHANGE_FIELD, ({key, value}) => ({key, value}));
 export const writePost = createRequestThunk(WRITE_POST, postsAPI.writePost);
 export const setOriginalPost = createAction(SET_ORIGINAL_POST, post => post);
+export const updatePost = createRequestThunk(UPDATE_POST, postsAPI.updatePost);
 
 const initialState = {
     title: '',
@@ -48,6 +50,14 @@ const write = handleActions(
             body: post.body,
             tags: post.tags,
             originalPostId: post._id
+        }),
+        [UPDATE_POST_SUCCESS]: (state, {payload: post}) => ({
+            ...state,
+            post
+        }),
+        [UPDATE_POST_FAILURE]: (state, {payload: postError}) => ({
+            ...state,
+            postError
         })
     },
     initialState

@@ -14,3 +14,10 @@ export const listPosts = ({tag, username, page}) => {
     }); //카테고리 추가
     return client.get(`/api/posts?${queryString}`);
 }
+
+export const updatePost = ({id, title, body, tags}) => 
+    client.patch(`/api/posts/${id}`, {
+        title,
+        body, 
+        tags
+    })
