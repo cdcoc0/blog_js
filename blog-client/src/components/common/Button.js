@@ -33,8 +33,8 @@ const buttonStyle = css`
         css`
             background: ${palette.violet[3]};
             &:hover {
-                //background: ${palette.yellow[2]};
-                background: #130f40;
+                background: ${palette.yellow[2]};
+                color: #130f40;
                 //background: #141433;
             }
             transition: 0.1s ease-in;
@@ -81,7 +81,7 @@ const Button = props => {
     return props.to ? (
         <StyledLink {...props} violet={props.violet ? 1 : 0} frame={props.frame ? 1 : 0} radius={props.radius ? 1 : 0} />
     ) : (
-        <StyledButton {...props} />
+        <StyledButton {...props} radius={props.radius ? 1 : 0} />
     );
 }
 

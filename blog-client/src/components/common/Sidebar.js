@@ -1,17 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import Responsive from "./Responsive";
+import palette from "../../lib/styles/palette";
+import Category from "./Category";
 
 const SidebarBlock = styled.div`
+    position: absolute;
     width: 280px;
-    //margin-top: 4rem;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     //background: pink;
-`;
-
-const UserBox = styled.div`
+    margin-top: 5rem;
 `;
 
 //category.map, React.memo 활용
@@ -20,8 +19,7 @@ const CategoryBox = styled.div``;
 const Sidebar = () => {
     return (
         <SidebarBlock>
-            <UserBox>UserName</UserBox>
-            <CategoryBox>categories</CategoryBox>
+            <Category />
         </SidebarBlock>
     );
 }

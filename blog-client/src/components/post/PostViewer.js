@@ -6,7 +6,7 @@ import SubInfo from "../common/SubInfo";
 import Tags from "../common/Tags";
 
 const PostViewerBlock = styled(Responsive)`
-    //margin-top: 4rem;
+    margin-top: 5rem;
     padding-left: 0;
     .tag-title {
         color: ${palette.violet[3]};

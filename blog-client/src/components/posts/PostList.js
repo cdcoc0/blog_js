@@ -8,7 +8,8 @@ import SubInfo from "../common/SubInfo";
 import Tags from "../common/Tags";
 
 const PostListBlock = styled(Responsive)`
-    //margin-left: 0;
+    margin-top: 5rem;
+    padding-left: 3rem;
 `;
 
 const WritePostButtonWrapper = styled.div`

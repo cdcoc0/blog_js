@@ -25,9 +25,11 @@ const AuthFormBlock = styled.div`
 const StyledInput = styled.input`
     font-size: 1rem;
     border: none;
-    background: ${palette.gray[1]};
-    border-radius: 4px;
-    //border-bottom: 1px solid black;
+    //background: ${palette.gray[1]};
+    background: none;
+    //border-radius: 4px;
+    border-bottom: 1px solid ${palette.violet[3]};
+    //border: 1px solid ${palette.violet[0]};
     padding: 0.5rem;
     outline: none;
     width: 100%;
@@ -36,12 +38,15 @@ const StyledInput = styled.input`
         border-bottom: 1px solid black;
     }
     & + & {
-        margin-top: 0.5rem;
+        margin-top: 0.75rem;
+    }
+    ::placeholder {
+        color: ${palette.gray[6]}
     }
 `;
 
 const ButtonWithMarginTop = styled(Button)`
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 `;
 
 const Footer = styled.div`
@@ -49,7 +54,7 @@ const Footer = styled.div`
     text-align: center;
     span {
         margin-right: 0.75rem;
-        color: ${palette.gray[5]};
+        color: ${palette.gray[6]};
         font-style: italic;
     }
     a {
@@ -61,7 +66,7 @@ const Footer = styled.div`
 const ErrorMessage = styled.div`
     color: red;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 1.25rem;
     font-size: 0.875rem;
 `;
 
