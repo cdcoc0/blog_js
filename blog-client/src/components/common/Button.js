@@ -55,13 +55,13 @@ const buttonStyle = css`
             transition: 0.1s ease-in;
         `
     }
-    ${props => 
+    /* ${props => 
         props.radius &&
         css`
-            border-radius: 16px;
             background: none;
+            border-radius: 16px;
         `
-    }
+    } */
     &:disabled {
         background: ${palette.gray[3]};
         color: ${palette.gray[5]};

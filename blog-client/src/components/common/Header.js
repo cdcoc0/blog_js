@@ -5,13 +5,15 @@ import Button from "./Button";
 import { Link } from "react-router-dom";
 import palette from "../../lib/styles/palette";
 import {RiMapPinUserFill} from 'react-icons/ri';
+import SetUserInfo from "../auth/SetUserInfo";
 
 const HeaderBlock = styled.div`
     position: fixed;
     width: 100%;
+    background: white;
     //background: #141433;
-    //background: #fdfbff;
-    //box-shadow: 0px 1px 3px ${palette.violet[0]};
+    box-shadow: 0px 1px 3px ${palette.gray[2]};
+    z-index: 5;
 `;
 
 const Wrapper = styled(Responsive)`
@@ -32,9 +34,10 @@ const Wrapper = styled(Responsive)`
         display: flex;
         color: ${palette.gray[7]};
         svg {
-            font-size: 1.5rem;
-            margin-right: 0.075rem;
+            font-size: 1.75rem;
+            margin-right: 0.25rem;
         }
+        //cursor: pointer;
     }
 `;
 
@@ -48,6 +51,18 @@ const UserInfo = styled.div`
     margin-right: 1.5rem;
 `;
 
+const AuthButton = styled(Button)`
+    background: none;
+    color: ${palette.violet[2]};
+    border: 1px solid ${palette.violet[2]};
+    border-radius: 16px;
+    &:hover {
+                background: none;
+                border: 1px solid ${palette.violet[1]};
+                color: ${palette.violet[1]};
+            }
+`;
+
 const Header = ({user, onLogout}) => {
     return (
         <>
@@ -56,13 +71,19 @@ const Header = ({user, onLogout}) => {
                     <Link to="/" className="logo">KIRRIS</Link>
                     {user ? (
                         <div className="right">
+                            <SetUserInfo username={user.username}>
+                                    <AuthButton onClick={onLogout}>Log out</AuthButton>
+                                </SetUserInfo>
                             <RiMapPinUserFill />
-                            <UserInfo>{user.username}</UserInfo>
-                            <Button radius frame onClick={onLogout}>Log out</Button>
+                            <UserInfo>
+                                {user.username}
+                                
+                            </UserInfo>
+                            {/* <AuthButton onClick={onLogout}>Log out</AuthButton> */}
                         </div>
                     ) : (
                         <div className="right">
-                            <Button to="/login" radius frame>Sign in</Button>
+                            <AuthButton to="/login">Sign in</AuthButton>
                         </div>
                     )}
                 </Wrapper>
