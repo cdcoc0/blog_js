@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Responsive from "./Responsive";
 import Button from "./Button";
@@ -31,13 +31,15 @@ const Wrapper = styled(Responsive)`
         //color: #fbf7ff;
     }
     .right {
-        display: flex;
         color: ${palette.gray[7]};
-        svg {
-            font-size: 1.75rem;
-            margin-right: 0.25rem;
+        .settings {
+            display: flex;
+            cursor: pointer;
+            svg {
+                font-size: 1.75rem;
+                margin-right: 0.25rem;
+            }
         }
-        //cursor: pointer;
     }
 `;
 
@@ -64,6 +66,12 @@ const AuthButton = styled(Button)`
 `;
 
 const Header = ({user, onLogout}) => {
+    const [settings, setSettings] = useState(false);
+
+    const onSettingsClick = () => {
+        setSettings(prev => !prev);
+    }
+
     return (
         <>
             <HeaderBlock>
@@ -71,15 +79,15 @@ const Header = ({user, onLogout}) => {
                     <Link to="/" className="logo">KIRRIS</Link>
                     {user ? (
                         <div className="right">
-                            <SetUserInfo username={user.username}>
-                                    <AuthButton onClick={onLogout}>Log out</AuthButton>
-                                </SetUserInfo>
+                            <SetUserInfo username={user.username} visible={settings}>
+                                <AuthButton onClick={onLogout}>Log out</AuthButton>
+                            </SetUserInfo>
+                            <div className="settings" onClick={onSettingsClick}>
                             <RiMapPinUserFill />
                             <UserInfo>
                                 {user.username}
-                                
                             </UserInfo>
-                            {/* <AuthButton onClick={onLogout}>Log out</AuthButton> */}
+                            </div>
                         </div>
                     ) : (
                         <div className="right">

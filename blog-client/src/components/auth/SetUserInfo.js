@@ -25,12 +25,12 @@ const SetUserInfoHeader = styled.div`
 
 const SetUserInfoBody = styled.div`
     padding: 1rem;
-    border-top: 1px solid ${palette.gray[1]};
-    border-bottom: 1px solid ${palette.gray[1]};
+    border-top: 1px solid ${palette.gray[2]};
+    border-bottom: 1px solid ${palette.gray[2]};
     flex: 1;
     .body-title {
         color: ${palette.gray[5]};
-        font-size: 0.875rem;
+        font-size: 0.825rem;
         font-weight: bold;
         margin-bottom: 0.75rem;
     }
@@ -58,7 +58,7 @@ const SetUserInfoFooter = styled.div`
 `;
 
 const SetUserInfo = ({children, visible, username}) => {
-    //if(!visible) return null;
+    if(!visible) return null;
 
     return (
         <SetUserInfoBlock>
@@ -73,7 +73,7 @@ const SetUserInfo = ({children, visible, username}) => {
                     <Link to="/" className="title">블로그 타이틀</Link>
                     <div>
                         <Link to="/write" className="icon"><RiPencilFill /></Link>
-                        <Link className="icon"><IoIosSettings /></Link>
+                        <Link to="/settings" className="icon"><IoIosSettings /></Link>
                     </div>
                 </div>
             </SetUserInfoBody>
