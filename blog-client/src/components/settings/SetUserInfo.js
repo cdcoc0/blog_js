@@ -16,6 +16,7 @@ const SetUserInfoBlock = styled.div`
     box-shadow: 0px 1px 1px ${palette.gray[2]};
     display: flex;
     flex-direction: column;
+    color: ${palette.gray[7]};
 `;
 
 const SetUserInfoHeader = styled.div`

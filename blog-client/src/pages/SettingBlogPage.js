@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Settings from '../components/settings/Settings';
+import SettingBlog from '../components/settings/SettingBlog';
 import SettingsSidebar from '../components/settings/SettingsSidebar';
 import HeaderContainer from '../containers/common/HeaderContainer';
 import palette from '../lib/styles/palette';
@@ -15,16 +15,16 @@ const Display = styled.div`
     background: ${palette.gray[0]};
 `;
 
-const SettingsPage = () => {
+const SettingBlogPage = () => {
     return (
         <>
-        <HeaderContainer />
-        <Display>
-            <SettingsSidebar home />
-            <Settings />
-        </Display>
+            <HeaderContainer />
+            <Display>
+                <SettingsSidebar blog />
+                <SettingBlog />
+            </Display>
         </>
     );
 };
 
-export default SettingsPage;
+export default SettingBlogPage;

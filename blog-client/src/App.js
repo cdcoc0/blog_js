@@ -6,6 +6,7 @@ import PostPage from './pages/PostPage';
 import RegisterPage from './pages/RegisterPage';
 import WritePage from './pages/WritePage';
 import SettingsPage from './pages/SettingsPage';
+import SettingBlogPage from './pages/SettingBlogPage';
 
 const App = () => {
     return (
@@ -15,7 +16,8 @@ const App = () => {
             <Route component={RegisterPage} path="/register" />
             <Route component={WritePage} path="/write" />
             <Route component={PostPage} path="/@:username/:postId" />
-            <Route component={SettingsPage} path={["/@:username/settings", "/settings"]} />
+            <Route component={SettingsPage} path={["/@:username/settings", "/settings"]} exact />
+            <Route component={SettingBlogPage} path={["/@:username/settings/blog", "/settings/blog"]} />
         </>
     );
 };

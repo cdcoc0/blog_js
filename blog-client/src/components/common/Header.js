@@ -5,7 +5,7 @@ import Button from "./Button";
 import { Link } from "react-router-dom";
 import palette from "../../lib/styles/palette";
 import {RiMapPinUserFill} from 'react-icons/ri';
-import SetUserInfo from "../auth/SetUserInfo";
+import SetUserInfo from "../settings/SetUserInfo";
 
 const HeaderBlock = styled.div`
     position: fixed;
@@ -31,7 +31,7 @@ const Wrapper = styled(Responsive)`
         //color: #fbf7ff;
     }
     .right {
-        color: ${palette.gray[7]};
+        color: ${palette.gray[6]};
         .settings {
             display: flex;
             cursor: pointer;
