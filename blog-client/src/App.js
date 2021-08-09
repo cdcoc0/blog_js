@@ -15,7 +15,7 @@ const App = () => {
             <Route component={RegisterPage} path="/register" />
             <Route component={WritePage} path="/write" />
             <Route component={PostPage} path="/@:username/:postId" />
-            <Route component={SettingsPage} path="/@:username/settings" />
+            <Route component={SettingsPage} path={["/@:username/settings", "/settings"]} />
         </>
     );
 };
