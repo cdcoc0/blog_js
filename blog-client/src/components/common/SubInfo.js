@@ -22,8 +22,8 @@ const SubInfoBlock = styled.div`
     ${props => 
         props.postItemFont &&
         css`
-        font-size: 0.875rem;
-        font-weight: bold;
+        font-size: 0.825rem;
+        font-weight: 600;
         color: ${palette.gray[5]};
         span + span:before {
             padding-left: 0.5rem;

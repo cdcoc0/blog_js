@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import palette from "../../lib/styles/palette";
@@ -17,7 +17,7 @@ const PostListBlock = styled(Responsive)`
 const WritePostButtonWrapper = styled(Responsive)`
     /* display: flex;
     justify-content: flex-end; */
-    margin-top: 5rem;
+    margin-top: 8rem;
     margin-bottom: 5rem;
     font-weight: bold;
     padding-bottom: 0.75rem;
@@ -29,10 +29,10 @@ const WritePostButtonWrapper = styled(Responsive)`
 `;
 
 const PostItemBlock = styled.div`
-    border: 1px solid black;
     width: 320px;
     height: 560px;
     padding: 1rem;
+    overflow-y: hidden;
 
     .postItem-pic{
         background: gray;
@@ -59,19 +59,19 @@ const PostItemBlock = styled.div`
     } */
 
     h3 {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
         margin-top: 0;
         margin-bottom: 0;
         &:hover {
-            color: ${palette.gray[6]};
+            color: ${palette.gray[7]};
         }
     }
     p {
-        margin-top: 1rem;
+        color: ${palette.gray[6]};
     }
     
     .postItem-space {
-        height: 1rem;
+        height: 0.75rem;
     }
 `;
 
@@ -79,7 +79,9 @@ const PostItem = ({post}) => {
     const {title, body, publishedDate, tags, user, _id} = post;
     return (
         <PostItemBlock>
-            <div className="postItem-pic"></div>
+            <Link to={`/@${user.username}/${_id}`}>
+                <div className="postItem-pic"></div>
+            </Link>
             <div className="postItem-category">카테고리</div>
             <h3>
                 <Link to={`/@${user.username}/${_id}`}>{title}</Link>

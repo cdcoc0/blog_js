@@ -33,7 +33,16 @@ const removeHtmlAndShorten = body => {
     const filtered = sanitizeHtml(body, {
         allowedTags: [],
     }); //태그는 다 뺀다는 의미(?)
-    return filtered.length < 200 ? filtered : `${filtered.slice(0, 200)}...`;
+    return filtered.length < 100 ? filtered : `${filtered.slice(0, 100)} ...`;
+}
+
+const shortenTitle = title => {
+    return title.length < 20 ? title : `${title.slice(0, 20)} ...`;
+}
+
+const shortenTags = tags => {
+    const shortenTags = tags.splice(3);
+    return tags.length < 4 ? tags : shortenTags;
 }
 
 export const getPostById = async (ctx, next) => {
@@ -112,15 +121,17 @@ export const list = async ctx => {
     try {
         const posts = await Post.find(query)
             .sort({_id: -1})
-            .limit(5)
-            .skip((page - 1) * 5)
+            .limit(9)
+            .skip((page - 1) * 9)
             .lean() //toJSON()
             .exec();
         const postCount = await Post.countDocuments(query).exec();
-        ctx.set('Last-Page', Math.ceil(postCount / 5));
+        ctx.set('Last-Page', Math.ceil(postCount / 9));
         ctx.body = posts.map(post => ({
             ...post,
-            body: removeHtmlAndShorten(post.body)
+            title: shortenTitle(post.title),
+            body: removeHtmlAndShorten(post.body),
+            // tags: shortenTags(post.tags)
         }));
     } catch(e) {
         ctx.throw(500, e);

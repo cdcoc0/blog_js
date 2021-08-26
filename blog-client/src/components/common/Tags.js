@@ -40,6 +40,7 @@ const TagsBlock = styled.div`
             props.changeFontSize &&
             css`
                 font-size: 0.875rem;
+                margin-bottom: 0.5rem;
             `}
     }
 `;

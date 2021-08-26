@@ -10,7 +10,7 @@ import SetUserInfo from "../settings/SetUserInfo";
 const HeaderBlock = styled.div`
     position: fixed;
     width: 100%;
-    background: white;
+    background: rgba(255, 255, 255, 0.9);
     //background: #141433;
     box-shadow: 0px 1px 3px ${palette.gray[2]};
     z-index: 5;
