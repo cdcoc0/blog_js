@@ -36,7 +36,7 @@ const Wrapper = styled(Responsive)`
             display: flex;
             cursor: pointer;
             svg {
-                font-size: 1.75rem;
+                font-size: 2rem;
                 margin-right: 0.25rem;
             }
         }

@@ -9,10 +9,9 @@ const TagsBlock = styled.div`
         props.hasMarginBottom &&
         css`
             margin-bottom: 3rem;
-        `
+            margin-top: 3rem;
+            `
     }
-        
-    margin-top: 3rem;
     .tag-title {
         color: ${palette.violet[3]};
         margin-bottom: 1rem;
@@ -37,12 +36,17 @@ const TagsBlock = styled.div`
             background: #fff9da;
             //아니면 그냥 회색바탕
         }
+        ${props => 
+            props.changeFontSize &&
+            css`
+                font-size: 0.875rem;
+            `}
     }
 `;
 
-const Tags = ({tags, tagTitle, hasMarginBottom}) => {
+const Tags = ({tags, tagTitle, hasMarginBottom, changeFontSize}) => {
     return (
-        <TagsBlock hasMarginBottom={hasMarginBottom}>
+        <TagsBlock hasMarginBottom={hasMarginBottom} changeFontSize={changeFontSize}>
             {tagTitle && (
                 <>
                 <div className="tag-title">

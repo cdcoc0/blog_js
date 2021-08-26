@@ -8,27 +8,58 @@ import SubInfo from "../common/SubInfo";
 import Tags from "../common/Tags";
 
 const PostListBlock = styled(Responsive)`
-    margin-top: 5rem;
-    padding-left: 3rem;
+    /* margin-top: 5rem;
+    padding-left: 3rem; */
+    display: flex;
+    flex-wrap: wrap;
 `;
 
-const WritePostButtonWrapper = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 3rem;
+const WritePostButtonWrapper = styled(Responsive)`
+    /* display: flex;
+    justify-content: flex-end; */
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    font-weight: bold;
+    padding-bottom: 0.75rem;
+    .post-count {
+        color: ${palette.violet[4]};
+        font-size: 1.125rem;
+    }
+    //border-bottom: 1px solid ${palette.gray[3]};
 `;
 
 const PostItemBlock = styled.div`
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    &:first-child {
-        padding-top: 0;
+    border: 1px solid black;
+    width: 320px;
+    height: 560px;
+    padding: 1rem;
+
+    .postItem-pic{
+        background: gray;
+        height: 200px;
+        margin-bottom: 1rem;
+        border-radius: 4px;
     }
+
+    .postItem-category {
+        margin-bottom: 1rem;
+        font-weight: bold;
+        color: ${palette.violet[3]};
+        font-size: 0.875rem;
+    }
+    /* padding-top: 1rem;
+    padding-bottom: 2rem; */
+
+    /* &:first-child {
+        margin-right: 0.25rem;
+    }
+
     & + & {
-        border-top: 1px solid ${palette.gray[2]};
-    }
-    h2 {
-        font-size: 2rem;
+        margin-right: 0.25rem;
+    } */
+
+    h3 {
+        font-size: 1.25rem;
         margin-top: 0;
         margin-bottom: 0;
         &:hover {
@@ -36,7 +67,11 @@ const PostItemBlock = styled.div`
         }
     }
     p {
-        margin-top: 2rem;
+        margin-top: 1rem;
+    }
+    
+    .postItem-space {
+        height: 1rem;
     }
 `;
 
@@ -44,12 +79,15 @@ const PostItem = ({post}) => {
     const {title, body, publishedDate, tags, user, _id} = post;
     return (
         <PostItemBlock>
-            <h2>
+            <div className="postItem-pic"></div>
+            <div className="postItem-category">카테고리</div>
+            <h3>
                 <Link to={`/@${user.username}/${_id}`}>{title}</Link>
-            </h2>
-            <SubInfo username={user.username} publishedDate={new Date(publishedDate)} />
+            </h3>
             <p>{body}</p>
-            <Tags tags={tags} />
+            <SubInfo username={user.username} publishedDate={new Date(publishedDate)} postItemFont />
+            <div className="postItem-space" />
+            <Tags tags={tags} changeFontSize />
         </PostItemBlock>
     );
 }
@@ -60,20 +98,25 @@ const PostList = ({loading, error, posts, showWriteButton}) => {
     }
 
     return (
-        <PostListBlock>
+        <>
             <WritePostButtonWrapper>
-                {showWriteButton && (
+                {/* {showWriteButton && (
                     <Button violet to="/write">새 글 작성하기</Button>
-                )}
-            </WritePostButtonWrapper>
-            {!loading && posts &&(
+                )} */}
                 <div>
-                    {posts.map(post => (
-                        <PostItem post={post} key={post._id} />
-                    ))}
+                    <span className="post-list">전체 포스트 </span><span className="post-count">8</span>
                 </div>
-            )}
-        </PostListBlock>
+            </WritePostButtonWrapper>
+            <PostListBlock>
+                {!loading && posts &&(
+                    <>
+                        {posts.map(post => (
+                            <PostItem post={post} key={post._id} />
+                        ))}
+                    </>
+                )}
+            </PostListBlock>
+        </>
     );
 }
 
