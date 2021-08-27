@@ -12,7 +12,7 @@ const Display = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    background: ${palette.gray[0]};
+    /* background: ${palette.gray[0]}; */
 `;
 
 const SettingBlogPage = () => {

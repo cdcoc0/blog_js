@@ -3,7 +3,7 @@ import styled from "styled-components";
 import palette from "../../lib/styles/palette";
 
 const CategoryBlock = styled.div`
-    padding: 1rem;
+    /* padding: 1rem; */
     color: ${palette.gray[6]};
 `;
 

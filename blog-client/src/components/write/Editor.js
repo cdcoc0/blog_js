@@ -1,13 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import Quill from "quill";
 import 'quill/dist/quill.bubble.css';
 import styled from "styled-components";
 import Responsive from "../common/Responsive";
 import palette from "../../lib/styles/palette";
+import Select from 'react-select';
 
 const EditorBlock = styled(Responsive)`
     padding-top: 5rem;
     padding-bottom: 5rem;
+    .editor-select {
+        margin-bottom: 5rem;
+    }
 `;
 
 const TitleInput = styled.input`
@@ -18,6 +22,7 @@ const TitleInput = styled.input`
     border-bottom: 1px solid ${palette.gray[4]};
     margin-bottom: 2rem;
     width: 100%;
+    background: none;
 `;
 
 const QuillWrapper = styled.div`
@@ -73,8 +78,16 @@ const Editor = ({title, body, onChangeField}) => {
         onChangeField({key: 'title', value: e.target.value});
     };
 
+    const options = useMemo(() => [
+        {value: "category1", label: "category1"},
+        {value: "category2", label: "category2"},
+    ], []);
+
     return (
         <EditorBlock>
+            <div className="editor-select">
+                <Select options={options} />
+            </div>
             <TitleInput placeholder="제목을 입력하세요" onChange={onChangeTitle} value={title} />
             <QuillWrapper>
                 <div ref={quillElement} />

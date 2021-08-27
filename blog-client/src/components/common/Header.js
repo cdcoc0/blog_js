@@ -11,7 +11,7 @@ const HeaderBlock = styled.div`
     position: fixed;
     width: 100%;
     background: rgba(255, 255, 255, 0.9);
-    //background: #141433;
+    //background: #f0e1fff1;
     box-shadow: 0px 1px 3px ${palette.gray[2]};
     z-index: 5;
 `;
